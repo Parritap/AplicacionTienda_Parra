@@ -1,6 +1,6 @@
-package AplicacionSubclases;
+package model.subclasses;
 
-import Aplicacion.Producto;
+import model.Producto;
 
 public class Refrigerado extends Producto {
 

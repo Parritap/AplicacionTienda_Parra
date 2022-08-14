@@ -1,6 +1,6 @@
-package AplicacionSubclases;
+package model.subclasses;
 
-import Aplicacion.Cliente;
+import model.Cliente;
 
 import java.util.Date;
 

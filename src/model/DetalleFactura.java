@@ -1,4 +1,4 @@
-package Aplicacion;
+package model;
 
 public class DetalleFactura {
 

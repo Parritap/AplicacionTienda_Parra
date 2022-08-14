@@ -1,0 +1,24 @@
+
+Si tienen una clases que usen métodos y más clases de las librerías de JavaFX tendrán
+que añadir el path de las librerías de JavaFX a la maquina virtual. Para ello, seguir los siguientes pasos.
+
+    1) Intentar correr la clase (aplicación) en cuestión. Les aparecerá un error dado que no han añadido las VM Options (o las opciones para la maquina virtual).
+
+    2) En la barra superior superior, al lado de un martillito aparece un cuadro con el nombre de la app. Si le dan click
+    aparece una opcion que dice "edir configurations". Dan click ahí.
+
+    3) Donde dice en azul "Modify Options", dan click y escogen la opción "Add VM Options". Dan click ahí.
+
+    4) Agregan la siguiente ruta en el campo VM Options:
+        --module-path "COLOQUE AQUÍ SU RUTA DE LA CARPETA LIB DE JAVAFX" --add-modules javafx.controls,javafx.fxml
+
+    5)Le dan al aplicar y luego a ok.
+
+    LISTO. ya pueden correr sus apliciones de JavaFX.
+
+
+
+
+
+     
+
