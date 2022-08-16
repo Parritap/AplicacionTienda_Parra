@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="772.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinal.controller.RegistroClienteController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="154.0" layoutY="60.0" prefHeight="44.0" prefWidth="491.0" text="Diligencie sus datos" textAlignment="CENTER" textFill="#db8c4f">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="52.0" layoutY="49.0" prefHeight="44.0" prefWidth="491.0" text="Registro de usuario " textAlignment="CENTER" textFill="#db8c4f">
             <font>
                 <Font name="Arial" size="41.0" />
             </font>
