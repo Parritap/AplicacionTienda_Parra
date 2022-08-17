@@ -1,30 +1,31 @@
 package model;
 
-public class Producto{
+import model.enums.PaisOrigen;
+import model.enums.TipoProducto;
+
+import java.util.Date;
+
+public class Producto {
 
     //atributos
-    private String nombre;
     private String codigo;
-    private int existencias;
+    private String nombre;
+    private String descripcion;
     private double valorUnitario;
+    private int cantExistencias;
+    private TipoProducto tipoProducto;
 
-    public Producto(String nombre, String codigo, int existencias, double valorUnitario) {
-        this.nombre = nombre;
+    public Producto(String codigo, String nombre, String descripcion, double valorUnitario, int cantExistencias,
+                    TipoProducto tipoProducto) {
         this.codigo = codigo;
-        this.existencias = existencias;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
         this.valorUnitario = valorUnitario;
+        this.cantExistencias = cantExistencias;
+        this.tipoProducto = tipoProducto;
     }
 
     public Producto() {
-
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getCodigo() {
@@ -35,12 +36,20 @@ public class Producto{
         this.codigo = codigo;
     }
 
-    public int getExistencias() {
-        return existencias;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setExistencias(int existencias) {
-        this.existencias = existencias;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public double getValorUnitario() {
@@ -49,5 +58,21 @@ public class Producto{
 
     public void setValorUnitario(double valorUnitario) {
         this.valorUnitario = valorUnitario;
+    }
+
+    public int getCantExistencias() {
+        return cantExistencias;
+    }
+
+    public void setCantExistencias(int cantExistencias) {
+        this.cantExistencias = cantExistencias;
+    }
+
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
+    }
+
+    public void setTipoProducto(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 }

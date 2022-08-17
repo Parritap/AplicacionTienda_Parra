@@ -2,15 +2,14 @@ package model;
 
 public class DetalleFactura {
 
-    //atributos
     private Producto producto;
-    private int cantidad;
-    private double total;
+    private int cantVendido;
+    private double subtotal;
 
     public DetalleFactura(Producto producto, int cantidad, double total) {
         this.producto = producto;
-        this.cantidad = cantidad;
-        this.total = total;
+        this.cantVendido = cantidad;
+        this.subtotal = total;
     }
 
     public Producto getProducto() {
@@ -21,19 +20,19 @@ public class DetalleFactura {
         this.producto = producto;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getCantVendido() {
+        return cantVendido;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setCantVendido(int cantVendido) {
+        this.cantVendido = cantVendido;
     }
 
-    public double getTotal() {
-        return total;
+    public double getSubtotal() {
+        return subtotal;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 }

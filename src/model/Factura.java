@@ -8,18 +8,19 @@ public class Factura {
     //atributos
     private String codigo;
     private Date fecha;
+    private ArrayList<DetalleFactura> listaDetalles;
+    private Cliente cliente;
     private double total;
     private int iva;
 
-    private ArrayList<DetalleFactura> listaDetalles;
-
-
     public Factura(String codigo, Date fecha, double total, int iva, ArrayList<DetalleFactura> listaDetalles) {
-        this.codigo = codigo;
-        this.fecha = fecha;
-        this.total = total;
-        this.iva = iva;
-        this.listaDetalles = listaDetalles;
+        if(this.cliente == cliente){
+            this.codigo = codigo;
+            this.fecha = fecha;
+            this.listaDetalles = listaDetalles;
+            this.total = total;
+            this.iva = iva;
+        }
     }
 
     public String getCodigo() {
@@ -38,6 +39,22 @@ public class Factura {
         this.fecha = fecha;
     }
 
+    public ArrayList<DetalleFactura> getListaDetalles() {
+        return listaDetalles;
+    }
+
+    public void setListaDetalles(ArrayList<DetalleFactura> listaDetalles) {
+        this.listaDetalles = listaDetalles;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public double getTotal() {
         return total;
     }
@@ -52,13 +69,5 @@ public class Factura {
 
     public void setIva(int iva) {
         this.iva = iva;
-    }
-
-    public ArrayList<DetalleFactura> getListaDetalles() {
-        return listaDetalles;
-    }
-
-    public void setListaDetalles(ArrayList<DetalleFactura> listaDetalles) {
-        this.listaDetalles = listaDetalles;
     }
 }
