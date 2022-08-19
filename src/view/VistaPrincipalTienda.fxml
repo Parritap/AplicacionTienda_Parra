@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="594.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinal.controller.VistaPrincipalTiendaController">
+    <children>
+        <Button layoutX="606.0" layoutY="15.0" mnemonicParsing="false" onAction="#filtrarProductosPorCategoria" text="filtrar por categoria" />
+        <TextField fx:id="txtBuscarProductoCliente" layoutX="33.0" layoutY="40.0" prefHeight="25.0" prefWidth="305.0" promptText="escriba el nombre de producto" />
+        <Label layoutX="33.0" layoutY="21.0" text="Buscar producto:" />
+        <Button layoutX="475.0" layoutY="15.0" mnemonicParsing="false" onAction="#abrirCarritoDeCompras" text="carrito de compras" />
+        <ScrollPane layoutY="87.0" prefHeight="513.0" prefWidth="739.0">
+            <content>
+                <VBox fx:id="vBoxComponentesProductos" alignment="TOP_CENTER" fillWidth="false" prefHeight="511.0" prefWidth="737.0" />
+            </content>
+        </ScrollPane>
+        <Button layoutX="364.0" layoutY="15.0" mnemonicParsing="false" onAction="#abrirDatosEnvioCliente" text="datos de envio" />
+        <Button layoutX="445.0" layoutY="51.0" mnemonicParsing="false" onAction="#abrirInformacionPagoCliente" text="Informacion de pago" />
+        <Button layoutX="587.0" layoutY="51.0" mnemonicParsing="false" onAction="#abrirInformacionCuentaCliente" text="informacion de cuenta" />
+        <Button layoutX="370.0" layoutY="53.0" mnemonicParsing="false" onAction="#abrirFacturasCliente" text="facturas" />
+    </children>
+</AnchorPane>

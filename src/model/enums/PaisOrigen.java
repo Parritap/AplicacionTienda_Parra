@@ -1,4 +1,4 @@
-package AplicacionSubclases;
+package model.enums;
 
 public enum PaisOrigen {
 

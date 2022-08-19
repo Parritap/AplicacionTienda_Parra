@@ -1,0 +1,20 @@
+
+1) Deben de tener el JavaFX para intelliJ descargado. Lo pueden encontrar en este link:
+    https://openjfx.io/openjfx-docs/
+
+    Esto es muy importante. Descargue el Non-modular from IDE. El JavaFX que usamos nosotros en NO MODULAR.
+    Luego de que lo descarguen, lo dejan en una carpeta que recuerden.
+
+    Luego de crear un proyecto Java (uno normal, nada de JavaFX), entonces van a Files > Proyect Structure > Libraries >
+    y agregan la librería de JavaFX que descargaron. Tienen agregar la carpeta del JavaFX que está
+    dentro del archivo descargaron  y cuyo nombre es "lib".
+
+    Luego de haber agregado la librería, vuelven a  Files > Proyect Struture > Modules > Dependencies,  Le dan click a la cruz para agregar
+    una nueva librería, les aparecerá una ventana emergente donde aparecen listadas las librerías agregadas.
+    Agregan al modulo la librería recientemente agregrada.
+
+    Listo. ya está instalado el JavaFX en su proyecto.
+
+
+
+
