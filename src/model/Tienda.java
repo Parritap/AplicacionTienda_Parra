@@ -1,7 +1,13 @@
 package model;
 
+import exceptions.NegativeNumberException;
 import exceptions.StringNuloOrVacioException;
+import model.enums.PaisOrigen;
 import model.enums.TipoProducto;
+import model.subclasses.Perecedero;
+import model.subclasses.ProductoEnvasado;
+import model.subclasses.ProductoPerecedero;
+import model.subclasses.ProductoRefrigerado;
 import utilities.MyUtils;
 
 import model.enums.TipoPersona;
@@ -15,6 +21,7 @@ public class Tienda {
     private String nombre;
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Factura> listaFacturas;
+    private ArrayList <Producto> listaProductos;
 
     public Tienda(String nombre, ArrayList<Cliente> listaClientes, ArrayList<Factura> listaFacturas) {
         this.nombre = nombre;
@@ -152,14 +159,82 @@ public class Tienda {
     }
 
 
+
     // CRUD PRODUCTO
 
+    public void crearProductoPerecedero (String codigo, String nombre, String descripcion, double valorUnitario,
+                                         int cantExistencias, TipoProducto tipoProducto, Date fechaVencimiento) throws StringNuloOrVacioException, NegativeNumberException {
 
-    public void crearProducto (String codigo, String nombre, int existencias, double valorUnitario, TipoProducto tipoProducto){
+        if (tipoProducto == null) throw new NullPointerException("El tipo de peroducto es nulo");
+        MyUtils.validarSiNuloOrVacio(codigo, nombre);
+        MyUtils.validarSiPositivo(cantExistencias, valorUnitario);
 
+        if (tipoProducto == tipoProducto.PERECEDERO) {
 
+            if (fechaVencimiento == null) throw new NullPointerException("la fecha de Vencimiento es nula");
+            ProductoPerecedero perecedero = new ProductoPerecedero(codigo, nombre, descripcion, valorUnitario,
+            cantExistencias, tipoProducto, fechaVencimiento);
+            listaProductos.add(perecedero);
+
+        }else {
+            System.out.print("el tipo de producto no es perecedero");
+        }
     }
 
+    public void crearProductoRefrigerado (String codigo, String nombre, String descripcion, double valorUnitario,
+                                          int cantExistencias, TipoProducto tipoProducto, String codigoAprovacion,
+                                          double tempRefrigeracion) throws StringNuloOrVacioException, NegativeNumberException {
+
+        if (tipoProducto == null) throw new NullPointerException("El tipo de peroducto es nulo");
+        MyUtils.validarSiNuloOrVacio(codigo, nombre);
+        MyUtils.validarSiPositivo(cantExistencias, valorUnitario);
+
+        if (tipoProducto == tipoProducto.REFRIGERADO) {
+
+            if (codigoAprovacion == null) throw new NullPointerException("el codigo de aprobacion es nulo");
+            MyUtils.validarSiPositivo(tempRefrigeracion);
+            ProductoRefrigerado refrigerado = new ProductoRefrigerado(codigo, nombre, descripcion, valorUnitario,
+                    cantExistencias, tipoProducto, codigoAprovacion, tempRefrigeracion);
+            listaProductos.add(refrigerado);
+
+        }else {
+            System.out.print("el tipo de producto no es Refrigerado");
+        }
+    }
+
+    public void crearProductoEnvasado (String codigo, String nombre, String descripcion, double valorUnitario, int cantExistencias,
+                                       TipoProducto tipoProducto, Date fechaEnvasado, double pesoEnvase, PaisOrigen paisOrigen) throws StringNuloOrVacioException, NegativeNumberException {
+
+        if (tipoProducto == null) throw new NullPointerException("El tipo de peroducto es nulo");
+        MyUtils.validarSiNuloOrVacio(codigo, nombre);
+        MyUtils.validarSiPositivo(cantExistencias, valorUnitario);
+
+        if (tipoProducto == tipoProducto.ENVASADO) {
+
+            if (fechaEnvasado == null) throw new NullPointerException("la fecha de envasado es nula");
+            if (paisOrigen == null) throw new NullPointerException("es pais de origen es nulo");
+            MyUtils.validarSiPositivo(pesoEnvase);
+            ProductoEnvasado envasado = new ProductoEnvasado(codigo, nombre, descripcion, valorUnitario,
+                    cantExistencias, tipoProducto, fechaEnvasado, pesoEnvase, paisOrigen);
+            listaProductos.add(envasado);
+
+        }else {
+            System.out.print("el tipo de producto no es Envasado");
+        }
+    }
+
+    public Producto leerProducto (String codigo){
+
+        if (codigo != null) {
+            for (Producto p : listaProductos
+            ) {
+                if (p.getCodigo().equals(codigo))
+                    return p;
+            }
+        }
+        return null;
+
+    }
 
 }
 
