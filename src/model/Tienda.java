@@ -4,7 +4,6 @@ import exceptions.NegativeNumberException;
 import exceptions.StringNuloOrVacioException;
 import model.enums.PaisOrigen;
 import model.enums.TipoProducto;
-import model.subclasses.Perecedero;
 import model.subclasses.ProductoEnvasado;
 import model.subclasses.ProductoPerecedero;
 import model.subclasses.ProductoRefrigerado;
