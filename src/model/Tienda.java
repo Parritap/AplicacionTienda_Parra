@@ -20,6 +20,14 @@ public class Tienda {
     private ArrayList<Factura> listaFacturas;
     private ArrayList <Producto> listaProductos;
 
+
+    public Tienda (String nombre){
+        this.nombre = nombre;
+        this.listaProductos = new ArrayList<>();
+        this.listaClientes = new ArrayList<>();
+        this. listaFacturas = new ArrayList<>();
+
+    }
     public Tienda(String nombre, ArrayList<Cliente> listaClientes, ArrayList<Factura> listaFacturas) {
         this.nombre = nombre;
         this.listaClientes = listaClientes;
@@ -272,112 +280,7 @@ public class Tienda {
             }
         }
         return null;
-    }
 
-    //UPDATE
-    private void actualizarProductoEnvasado (String codigo, String nuevoNombre, String nuevaDescripcion, double nuevoValorUnitario, int nuevaCantExistencias,
-                                              Date nuevaFechaEnvasado, double nuevoPesoEnvase) {
-
-        if (codigo != null || !codigo.equals("")) {
-            for (Producto p : listaProductos
-            ) {
-                if (p.getTipoProducto() == TipoProducto.ENVASADO) {
-                    if (nuevoNombre != null && !nuevoNombre.equals("")){
-                            p.setNombre(nuevoNombre);
-                    }
-                    if (nuevaDescripcion != null && !nuevaDescripcion.equals("")){
-                        p.setDescripcion(nuevaDescripcion);
-                    }
-                    if (nuevoValorUnitario > 0){
-                        p.setValorUnitario(nuevoValorUnitario);
-                    }
-                    if (nuevaCantExistencias > 0){
-                        p.setCantExistencias(nuevaCantExistencias);
-                    }
-                    if (nuevaFechaEnvasado != null ){
-                        ((ProductoEnvasado) p).setFechaEnvasado(nuevaFechaEnvasado);
-                    }
-                    if (nuevoPesoEnvase > 0){
-                        ((ProductoEnvasado) p).setPesoEnvase(nuevoValorUnitario);
-                    }
-                }
-            }
-        }
-    }
-
-    private void actualizarProductoPerecedero (String codigo, String nuevoNombre, String nuevaDescripcion, double nuevoValorUnitario,
-                                               int nuevaCantExistencias,  Date nuevaFechaVencimiento) {
-
-        if (codigo != null || !codigo.equals("")) {
-            for (Producto p : listaProductos
-            ) {
-                if (p.getTipoProducto() == TipoProducto.PERECEDERO) {
-
-                    if (nuevoNombre != null && !nuevoNombre.equals("")){
-                        p.setNombre(nuevoNombre);
-                    }
-                    if (nuevaDescripcion != null && !nuevaDescripcion.equals("")){
-                        p.setDescripcion(nuevaDescripcion);
-                    }
-                    if (nuevoValorUnitario > 0){
-                        p.setValorUnitario(nuevoValorUnitario);
-                    }
-                    if (nuevaCantExistencias > 0){
-                        p.setCantExistencias(nuevaCantExistencias);
-                    }
-                    if (nuevaFechaVencimiento != null ){
-                        ((ProductoPerecedero) p).setFechaVencimiento(nuevaFechaVencimiento);
-                    }
-                }
-            }
-        }
-    }
-
-    private void actualizarProductoRefrigerado (String codigo, String nuevoNombre, String nuevaDescripcion, double nuevoValorUnitario,
-                                                int nuevaCantExistencias, String nuevoCodigoAprovacion,
-                                                double nuevoTempRefrigeracion) {
-
-        if (codigo != null || !codigo.equals("")) {
-            for (Producto p : listaProductos
-            ) {
-                if (p.getTipoProducto() == TipoProducto.REFRIGERADO) {
-                    if (nuevoNombre != null && !nuevoNombre.equals("")){
-                        p.setNombre(nuevoNombre);
-                    }
-                    if (nuevaDescripcion != null && !nuevaDescripcion.equals("")){
-                        p.setDescripcion(nuevaDescripcion);
-                    }
-                    if (nuevoValorUnitario > 0){
-                        p.setValorUnitario(nuevoValorUnitario);
-                    }
-                    if (nuevaCantExistencias > 0){
-                        p.setCantExistencias(nuevaCantExistencias);
-                    }
-                    if (nuevoCodigoAprovacion != null && !nuevoCodigoAprovacion.equals("")){
-                        ((ProductoRefrigerado) p).setCodigoAprovacion(nuevoCodigoAprovacion);
-                    }
-                    if (nuevoTempRefrigeracion > 0){
-                        ((ProductoRefrigerado) p).setTempRefrigeracion(nuevoTempRefrigeracion);
-                    }
-                }
-            }
-        }
-    }
-
-    //DELETE
-    private boolean eliminarProducto(String codigo) {
-
-        if (codigo != null && !codigo.equals("")) {
-
-            for (Producto p : listaProductos
-            ) {
-                if (p.getCodigo().equals(codigo)) {
-                    listaClientes.remove(p);
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 }
 
