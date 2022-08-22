@@ -27,8 +27,9 @@ public class Cliente {
         this.tipoPersona = tipoPersona;
     }
 
-    public Cliente() {
-    }
+
+    public Cliente() {}
+
 
     public String getNombre() {
         return nombre;
@@ -85,4 +86,5 @@ public class Cliente {
     public void setTipoPersona(TipoPersona tipoPersona) {
         this.tipoPersona = tipoPersona;
     }
+
 }

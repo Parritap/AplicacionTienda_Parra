@@ -4,9 +4,7 @@ import exceptions.NegativeNumberException;
 import exceptions.StringNuloOrVacioException;
 import model.enums.PaisOrigen;
 import model.enums.TipoProducto;
-import model.subclasses.ProductoEnvasado;
-import model.subclasses.ProductoPerecedero;
-import model.subclasses.ProductoRefrigerado;
+import model.subclasses.*;
 import utilities.MyUtils;
 
 import model.enums.TipoPersona;
@@ -51,7 +49,8 @@ public class Tienda {
     public void setListaFacturas(ArrayList<Factura> listaFacturas) {
         this.listaFacturas = listaFacturas;
     }
-//CRUDS----------------------------------------------------
+
+    //CRUDS----------------------------------------------------
     /*
     Create
     Read
@@ -62,29 +61,44 @@ public class Tienda {
 
     //CRUD Cliente
 
-    private void crearCliente(TipoPersona tipoPersona, String nombre, String apellidos, String identificacion,
-                              String direccion, String telefono, String email, Date fechaNacimiento, String nit,
-                              String idTributaria) throws StringNuloOrVacioException {
+    private void crearClienteNatural (String nombre, String identificacion, String direccion, String telefono, String email,
+                                      String contrasenia, TipoPersona tipoPersona, Date fechaNacimiento) throws StringNuloOrVacioException {
 
         if (tipoPersona == null) throw new NullPointerException("El tipo de persona es nulo");
 
-        MyUtils.validarSiNuloOrVacio(nombre, apellidos, identificacion, direccion, telefono, email);
+        if (tipoPersona == TipoPersona.NATURAL) {
 
-        if (tipoPersona == TipoPersona.NATURAL && fechaNacimiento == null) throw new NullPointerException ("La fecha de nacimiento indicada es nula"){
-            Cliente clienteNatural = new Cliente(nombre, apellidos, identificacion, direccion, telefono, email, fechaNacimiento);
+            MyUtils.validarSiNuloOrVacio(nombre,identificacion, direccion, telefono, email, contrasenia);
+            if (fechaNacimiento == null) throw new NullPointerException ("La fecha de nacimiento indicada es nula");
+            Cliente clienteNatural = new ClienteNatural(nombre, identificacion, direccion, telefono, email,
+                                                        contrasenia, tipoPersona, fechaNacimiento);
             this.listaClientes.add(clienteNatural);
 
+        }else {
+            System.out.print("el tipo de Cliente no es natural, Seleccione otra opcion");
+        }
+    }
 
-        } else {
+    private void crearClienteJuridico (String nombre, String identificacion, String direccion, String telefono, String email,
+                                       String contrasenia, TipoPersona tipoPersona, String nit, String idTributaria) throws StringNuloOrVacioException {
 
-            if (nit == null && id_tributaria == null)
-                throw new NullPointerException("El nit o el ID tributario es nulo");
-            Juridica clienteJuridico = new Juridica(nombre, direccion, doc, telefono, email, contrasenia, nit, id_tributaria);
+        if (tipoPersona == null) throw new NullPointerException("El tipo de persona es nulo");
+
+        if (tipoPersona == TipoPersona.JURIDICA) {
+
+            MyUtils.validarSiNuloOrVacio(nombre,identificacion, direccion, telefono, email, contrasenia);
+            if (nit == null || idTributaria == null) throw new NullPointerException ("el nit o la idTributaria indicada es nula");
+            Cliente clienteJuridico = new ClienteJuridico(nombre, identificacion, direccion, telefono, email,
+                    contrasenia, tipoPersona, nit, idTributaria);
             this.listaClientes.add(clienteJuridico);
+
+        }else {
+            System.out.print("el tipo de Cliente no es Juridico, Seleccione otra opcion");
         }
     }
 
 
+    //READ
     private Cliente leerCliente(String email) {
 
         if (email != null) {
@@ -97,52 +111,75 @@ public class Tienda {
         return null;
     }
 
-    private void actualizarCliente(String email, String nuevoNombre, String nuevaDirec, String nuevoDoc, String nuevoTelef, String nuevaContrasenia, String nuevoNIT, String nuevaID_tributaria) {
+    //UPDATE
+    private void actualizarClienteNatural(String email, String nuevoNombre, String nuevaDireccion, String nuevoTelefono,
+                                          String nuevaContrasenia) {
 
         if (email != null || !email.equals("")) {
             for (Cliente c : listaClientes
             ) {
+                if (c.getTipoPersona() == TipoPersona.NATURAL) {
 
-                if (c.getEmail().equals(email)) {
-
-                    if (c.getTipoPersona() == TipoPersona.NATURAL) {
+                    if (c.getEmail().equals(email)) {
 
                         if (nuevoNombre != null && !nuevoNombre.equals("")) {
                             c.setNombre(nuevoNombre);
                         }
-                        if (nuevaDirec != null && !nuevaDirec.equals("")) {
-                            c.setDireccion(nuevaDirec);
+                        if (nuevaDireccion != null && !nuevaDireccion.equals("")) {
+                            c.setDireccion(nuevaDireccion);
                         }
-                        if (nuevoDoc != null && !nuevoDoc.equals("")) {
-                            c.setDocumento(nuevoDoc);
-                        }
-                        if (nuevoTelef != null && !nuevoTelef.equals("")) {
-                            c.setTelefono(nuevoTelef);
+                        if (nuevoTelefono != null && !nuevoTelefono.equals("")) {
+                            c.setTelefono(nuevoTelefono);
                         }
 
                         if (nuevaContrasenia != null && nuevaContrasenia.equals("")) {
                             c.setContrasenia(nuevaContrasenia);
                         }
-
                     }
-                    if (c.getTipoPersona() == TipoPersona.JURIDICA) {
-
-                        Juridica personaJuridica = (Juridica) c;
-
-                        if (nuevoNIT != null && !nuevoNIT.equals("")) {
-                            personaJuridica.setNit(nuevoNIT);
-                        }
-                        if (nuevaID_tributaria != null && !!nuevaID_tributaria.equals("")) {
-                            personaJuridica.setId_tributaria(nuevaID_tributaria);
-                        }
-                    }
-
                 }
             }
         }
     }
 
-    private boolean eliminarCliente(String email) {
+    private void actualizarClienteJurudico(String email, String nuevoNombre, String nuevaDireccion, String nuevoTelefono,
+                                          String nuevaContrasenia,  String nuevoNit, String nuevaIdTributaria) {
+
+        if (email != null || !email.equals("")) {
+            for (Cliente c : listaClientes
+            ) {
+                if (c.getTipoPersona() == TipoPersona.NATURAL) {
+
+                    if (c.getEmail().equals(email)) {
+
+                        if (nuevoNombre != null && !nuevoNombre.equals("")) {
+                            c.setNombre(nuevoNombre);
+                        }
+
+                        if (nuevaDireccion != null && !nuevaDireccion.equals("")) {
+                            c.setDireccion(nuevaDireccion);
+                        }
+                        if (nuevoTelefono != null && !nuevoTelefono.equals("")) {
+                            c.setTelefono(nuevoTelefono);
+                        }
+
+                        if (nuevaContrasenia != null && nuevaContrasenia.equals("")) {
+                            c.setContrasenia(nuevaContrasenia);
+                        }
+                        if (nuevaIdTributaria != null && nuevaIdTributaria.equals("")){
+                            ((ClienteJuridico) c).setIdTributaria(nuevaIdTributaria);
+                        }
+                        if (nuevoNit != null && nuevoNit.equals("")){
+                            ((ClienteJuridico) c).setNit(nuevoNit);
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    //DELETE
+    private boolean eliminarCliente(String email) throws Throwable {
 
         if (email != null && !email.equals("")) {
 
@@ -158,21 +195,21 @@ public class Tienda {
     }
 
 
-
     // CRUD PRODUCTO
 
+    //CREATE
     public void crearProductoPerecedero (String codigo, String nombre, String descripcion, double valorUnitario,
                                          int cantExistencias, TipoProducto tipoProducto, Date fechaVencimiento) throws StringNuloOrVacioException, NegativeNumberException {
 
         if (tipoProducto == null) throw new NullPointerException("El tipo de peroducto es nulo");
-        MyUtils.validarSiNuloOrVacio(codigo, nombre);
-        MyUtils.validarSiPositivo(cantExistencias, valorUnitario);
 
         if (tipoProducto == tipoProducto.PERECEDERO) {
 
+            MyUtils.validarSiNuloOrVacio(codigo, nombre);
+            MyUtils.validarSiPositivo(cantExistencias, valorUnitario);
             if (fechaVencimiento == null) throw new NullPointerException("la fecha de Vencimiento es nula");
-            ProductoPerecedero perecedero = new ProductoPerecedero(codigo, nombre, descripcion, valorUnitario,
-            cantExistencias, tipoProducto, fechaVencimiento);
+            Producto perecedero = new ProductoPerecedero(codigo, nombre, descripcion, valorUnitario,
+                                                            cantExistencias, tipoProducto, fechaVencimiento);
             listaProductos.add(perecedero);
 
         }else {
@@ -180,26 +217,28 @@ public class Tienda {
         }
     }
 
+
     public void crearProductoRefrigerado (String codigo, String nombre, String descripcion, double valorUnitario,
                                           int cantExistencias, TipoProducto tipoProducto, String codigoAprovacion,
                                           double tempRefrigeracion) throws StringNuloOrVacioException, NegativeNumberException {
 
         if (tipoProducto == null) throw new NullPointerException("El tipo de peroducto es nulo");
-        MyUtils.validarSiNuloOrVacio(codigo, nombre);
-        MyUtils.validarSiPositivo(cantExistencias, valorUnitario);
 
         if (tipoProducto == tipoProducto.REFRIGERADO) {
 
+            MyUtils.validarSiNuloOrVacio(codigo, nombre);
+            MyUtils.validarSiPositivo(cantExistencias, valorUnitario);
             if (codigoAprovacion == null) throw new NullPointerException("el codigo de aprobacion es nulo");
             MyUtils.validarSiPositivo(tempRefrigeracion);
-            ProductoRefrigerado refrigerado = new ProductoRefrigerado(codigo, nombre, descripcion, valorUnitario,
-                    cantExistencias, tipoProducto, codigoAprovacion, tempRefrigeracion);
+            Producto refrigerado = new ProductoRefrigerado(codigo, nombre, descripcion, valorUnitario,
+                                                            cantExistencias, tipoProducto, codigoAprovacion, tempRefrigeracion);
             listaProductos.add(refrigerado);
 
         }else {
             System.out.print("el tipo de producto no es Refrigerado");
         }
     }
+
 
     public void crearProductoEnvasado (String codigo, String nombre, String descripcion, double valorUnitario, int cantExistencias,
                                        TipoProducto tipoProducto, Date fechaEnvasado, double pesoEnvase, PaisOrigen paisOrigen) throws StringNuloOrVacioException, NegativeNumberException {
@@ -222,6 +261,7 @@ public class Tienda {
         }
     }
 
+    //READ
     public Producto leerProducto (String codigo){
 
         if (codigo != null) {
@@ -234,6 +274,8 @@ public class Tienda {
         return null;
 
     }
+
+    //UPDATE
 
 }
 
