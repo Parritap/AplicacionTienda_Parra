@@ -2,40 +2,85 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import model.Producto;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.*;
 
 public class VistaPrincipalController {
 
 
+    Cliente cliente;
+    Tienda tienda = Singleton.getInstance().getTienda();
+
+    Producto productoSeleccionado = null;
+
+    ObservableList<Producto> OL_productos = FXCollections.observableArrayList();
+
+    @FXML
+    private Button btn_AgregarAlCarrito;
+
+    @FXML
+    private Button btn_IrAlCarrito;
 
     @FXML
     private Label labelMessage;
 
     @FXML
-    private TableView<Producto> table;
+    private TableView<Producto> tablaProductos;
+
+    @FXML
+    private TableColumn<Producto, String> colNombreProducto;
+
+    @FXML
+    private TableColumn<Producto, Double> colValorProducto;
 
     @FXML
     private TextField txtFieldCantidad;
 
+    @FXML
+    void comprarProductos(ActionEvent event) {
+
+        String str = txtFieldCantidad.getText();
+        int num = 0;
+        try {
+            num = Integer.parseInt(str);
+        } catch (NumberFormatException numberFormatException) {
+            labelMessage.setText("Esa no es una cantidad valida.");
+        }
+
+        if (num < 1) {
+            labelMessage.setText("Por favor ingrese un número válido");
+        } else {
+            DetalleFactura d = new DetalleFactura(productoSeleccionado, num);
+            cliente.getCarritoCompras().getListaDetalles().add(d);
+        }
 
 
-    public ObservableList<Producto> crearTablaProductos() {
+    }
 
-        ObservableList<Producto> listaProductos = FXCollections.observableArrayList();
+    @FXML
+    void irAlCarrito(ActionEvent event) {
 
+    }
 
+    @FXML
+    void initialize() {
 
+        OL_productos.addAll(tienda.getListaProductos());
 
-        return listaProductos;
+        colNombreProducto.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colValorProducto.setCellValueFactory(new PropertyValueFactory<>("valorUnitario"));
+
+        tablaProductos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+
+            productoSeleccionado = newSelection;
+        });
+
+        tablaProductos.getItems().clear();
+        tablaProductos.setItems(OL_productos);
     }
 
 
 }
-
-
-
-

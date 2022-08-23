@@ -15,17 +15,24 @@ public class Singleton {
 
 
     private static class SingletonHolder {
-        private final static Singleton eInstance = new Singleton();
+        private final static Singleton E_INSTANCE = new Singleton();
     }
 
     public static Singleton getInstance() {
-        return SingletonHolder.eInstance;
+        return SingletonHolder.E_INSTANCE;
     }
 
 
     public Singleton() {
         inicilizarDatos();
     }
+
+
+    public Tienda getTienda() {
+        return tienda;
+    }
+
+
 
     private void inicilizarDatos() {
 

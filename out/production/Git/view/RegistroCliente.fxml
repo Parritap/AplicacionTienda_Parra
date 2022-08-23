@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="772.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinal.controller.RegistroClienteController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="52.0" layoutY="49.0" prefHeight="44.0" prefWidth="491.0" text="Registro de usuario " textAlignment="CENTER" textFill="#db8c4f">
+            <font>
+                <Font name="Arial" size="41.0" />
+            </font>
+        </Label>
+        <Separator layoutX="23.0" layoutY="144.0" prefHeight="3.0" prefWidth="622.0" />
+        <Label layoutX="88.0" layoutY="169.0" prefHeight="22.0" prefWidth="160.0" text="Nombre:">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="84.0" layoutY="227.0" text="Tipo de documento:">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="86.0" layoutY="403.0" text="Fecha de nacimiento :">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="84.0" layoutY="346.0" text="email :">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="85.0" layoutY="516.0" text="Ciudad de residencia :">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="84.0" layoutY="454.0" text="Departamento de residencia :">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtNumeroDocumentoCliente" layoutX="347.0" layoutY="291.0" prefHeight="25.0" prefWidth="177.0" promptText="ingrese su num documento" />
+        <TextField fx:id="txtEmailCliente" layoutX="347.0" layoutY="345.0" prefHeight="25.0" prefWidth="177.0" promptText="ingrese su email" />
+        <TextField fx:id="txtNombreCliente" layoutX="347.0" layoutY="164.0" prefHeight="25.0" prefWidth="177.0" promptText="ingrese su nombre" />
+        <TextField fx:id="txtCiudadCliente" layoutX="347.0" layoutY="515.0" prefHeight="25.0" prefWidth="177.0" promptText="Ingrese su ciudad" />
+        <TextField fx:id="txtDepartamentoCliente" layoutX="347.0" layoutY="453.0" prefHeight="25.0" prefWidth="177.0" promptText="Ingrese su departamento" />
+        <Label layoutX="87.0" layoutY="292.0" text="Número de Documento:">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnRegistrarseCliente" layoutX="84.0" layoutY="685.0" mnemonicParsing="false" onAction="#registrarseAction" prefHeight="54.0" prefWidth="450.0" text="Registrarse" />
+        <Label fx:id="labelExcepciones" alignment="CENTER" contentDisplay="CENTER" layoutX="605.0" layoutY="-26.0" prefHeight="171.0" prefWidth="375.0" text="Tiendas Quindio" textAlignment="CENTER" textFill="#cd4646">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="118.0" fitWidth="123.0" layoutX="41.0" layoutY="14.0">
+            <image>
+                <Image url="@imagenesProyecto/iconoRegistro.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="772.0" fitWidth="491.0" layoutX="658.0">
+            <image>
+                <Image url="@images/coffeeMug.jpg" />
+            </image>
+        </ImageView>
+        <Button fx:id="btnLimpiarCampos" layoutX="545.0" layoutY="700.0" mnemonicParsing="false" onAction="#limpiarCamposAction" text="Limpiar campos" />
+        <ChoiceBox fx:id="choiceBoxTipoDocumento" layoutX="347.0" layoutY="226.0" prefHeight="25.0" prefWidth="177.0" />
+        <Label layoutX="84.0" layoutY="575.0" text="Contraseña:">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="84.0" layoutY="626.0" text="Direccion:">
+            <font>
+                <Font name="Arial" size="19.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtContraseña" layoutX="347.0" layoutY="574.0" prefHeight="25.0" prefWidth="177.0" promptText="ingrese su nueva contraseña" />
+        <TextField fx:id="txtDireccion" layoutX="347.0" layoutY="624.0" prefHeight="25.0" prefWidth="177.0" promptText="ingrese su direccion" />
+        <DatePicker fx:id="datePickerFechaNacimiento" layoutX="349.0" layoutY="402.0" promptText="ingrese su fecha de nacimiento" />
+    </children>
+</AnchorPane>

@@ -16,6 +16,8 @@ public class Cliente {
     private String contrasenia;
     private TipoPersona tipoPersona;
 
+    private CarritoCompras carritoCompras;
+
     public Cliente(String nombre, String identificacion, String direccion, String telefono, String email,
                    String contrasenia, TipoPersona tipoPersona) {
         this.nombre = nombre;
@@ -28,7 +30,8 @@ public class Cliente {
     }
 
 
-    public Cliente() {}
+    public Cliente() {
+    }
 
 
     public String getNombre() {
@@ -87,4 +90,11 @@ public class Cliente {
         this.tipoPersona = tipoPersona;
     }
 
+    public CarritoCompras getCarritoCompras() {
+        return carritoCompras;
+    }
+
+    public void setCarritoCompras(CarritoCompras carritoCompras) {
+        this.carritoCompras = carritoCompras;
+    }
 }

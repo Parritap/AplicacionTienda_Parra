@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tblProducto" layoutX="30.0" layoutY="100.0" prefHeight="232.0" prefWidth="768.0">
+         <columns>
+            <TableColumn fx:id="tblColCodigoProducto" prefWidth="120.79998779296875" text="Codigo" />
+            <TableColumn fx:id="tblColNombreProducto" prefWidth="182.39996337890625" text="Nombre" />
+            <TableColumn fx:id="tblColPrecioProducto" prefWidth="132.800048828125" text="Valor por unidad" />
+            <TableColumn fx:id="tblColCantidadProducto" prefWidth="140.00003051757812" text="Cantidad" />
+            <TableColumn fx:id="tblColTipoProducto" prefWidth="192.0" text="Total" />
+         </columns>
+      </TableView>
+      <Label layoutX="24.0" layoutY="20.0" prefHeight="54.0" prefWidth="365.0" text="Carrito de compras" textFill="#4ad427">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Button layoutX="467.0" layoutY="391.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="224.0" text="Borrar lista" />
+      <Button layoutX="106.0" layoutY="389.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="224.0" text="Comprar" />
+   </children>
+</AnchorPane>

@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="594.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinal.controller.VistaPrincipalTiendaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VistaPrincipalController">
    <children>
-      <Button layoutX="606.0" layoutY="15.0" mnemonicParsing="false" onAction="#filtrarProductosPorCategoria" text="filtrar por categoria" />
-      <TextField fx:id="txtBuscarProductoCliente" layoutX="33.0" layoutY="40.0" prefHeight="25.0" prefWidth="305.0" promptText="escriba el nombre de producto" />
-      <Label layoutX="33.0" layoutY="21.0" text="Buscar producto:" />
-      <Button layoutX="475.0" layoutY="15.0" mnemonicParsing="false" onAction="#abrirCarritoDeCompras" text="carrito de compras" />
-      <ScrollPane layoutY="87.0" prefHeight="513.0" prefWidth="739.0">
-         <content>
-            <VBox fx:id="vBoxComponentesProductos" alignment="TOP_CENTER" fillWidth="false" prefHeight="511.0" prefWidth="737.0" />
-         </content>
-      </ScrollPane>
-      <Button layoutX="364.0" layoutY="15.0" mnemonicParsing="false" onAction="#abrirDatosEnvioCliente" text="datos de envio" />
-      <Button layoutX="445.0" layoutY="51.0" mnemonicParsing="false" onAction="#abrirInformacionPagoCliente" text="Informacion de pago" />
-      <Button layoutX="587.0" layoutY="51.0" mnemonicParsing="false" onAction="#abrirInformacionCuentaCliente" text="informacion de cuenta" />
-      <Button layoutX="372.0" layoutY="51.0" mnemonicParsing="false" onAction="#abrirFacturasCliente" text="facturas" />
+      <Label layoutX="31.0" layoutY="25.0" prefHeight="62.0" prefWidth="558.0" text="Vista principial" textFill="#fc8888">
+         <font>
+            <Font name="Roboto Medium" size="44.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="533.0" fitWidth="400.0" layoutX="563.0" layoutY="67.0">
+         <image>
+            <Image url="@images/CarritoDeCompras.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tablaProductos" layoutX="40.0" layoutY="120.0" prefHeight="204.0" prefWidth="486.0">
+        <columns>
+          <TableColumn fx:id="colNombreProducto" prefWidth="227.19999313354492" text="Producto" />
+          <TableColumn fx:id="colValorProducto" prefWidth="257.60003662109375" text="Valor" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtFieldCantidad" layoutX="169.0" layoutY="376.0" prefHeight="54.0" prefWidth="180.0" promptText="Indique la cantidad a llevar" />
+      <Label layoutX="69.0" layoutY="388.0" prefHeight="25.0" prefWidth="85.0" text="Cantidad">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_AgregarAlCarrito" layoutX="387.0" layoutY="376.0" mnemonicParsing="false" onAction="#comprarProductos" prefHeight="54.0" prefWidth="109.0" text="Agregar al carrito" />
+      <Label fx:id="labelMessage" layoutX="69.0" layoutY="480.0" prefHeight="54.0" prefWidth="382.0" text="..." textFill="#ff6f6f">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_IrAlCarrito" layoutX="842.0" layoutY="25.0" mnemonicParsing="false" onAction="#irAlCarrito" text="Ir al carrito" />
    </children>
 </AnchorPane>

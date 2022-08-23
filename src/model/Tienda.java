@@ -58,6 +58,14 @@ public class Tienda {
         this.listaFacturas = listaFacturas;
     }
 
+    public ArrayList<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(ArrayList<Producto> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
     //CRUDS----------------------------------------------------
     /*
     Create

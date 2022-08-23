@@ -4,12 +4,11 @@ public class DetalleFactura {
 
     private Producto producto;
     private int cantVendido;
-    private double subtotal;
 
-    public DetalleFactura(Producto producto, int cantidad, double total) {
+
+    public DetalleFactura(Producto producto, int cantidad) {
         this.producto = producto;
         this.cantVendido = cantidad;
-        this.subtotal = total;
     }
 
     public Producto getProducto() {
@@ -28,11 +27,4 @@ public class DetalleFactura {
         this.cantVendido = cantVendido;
     }
 
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
 }

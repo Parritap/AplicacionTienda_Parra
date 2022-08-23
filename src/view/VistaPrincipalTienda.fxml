@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VistaPrincipalController">
    <children>
       <Label layoutX="31.0" layoutY="25.0" prefHeight="62.0" prefWidth="558.0" text="Vista principial" textFill="#fc8888">
          <font>
@@ -22,10 +22,10 @@
             <Image url="@images/CarritoDeCompras.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="40.0" layoutY="120.0" prefHeight="204.0" prefWidth="486.0">
+      <TableView fx:id="tablaProductos" layoutX="40.0" layoutY="120.0" prefHeight="204.0" prefWidth="486.0">
         <columns>
-          <TableColumn prefWidth="227.19999313354492" text="Producto" />
-          <TableColumn prefWidth="257.60003662109375" text="Valor" />
+          <TableColumn fx:id="colNombreProducto" prefWidth="227.19999313354492" text="Producto" />
+          <TableColumn fx:id="colValorProducto" prefWidth="257.60003662109375" text="Valor" />
         </columns>
       </TableView>
       <TextField fx:id="txtFieldCantidad" layoutX="169.0" layoutY="376.0" prefHeight="54.0" prefWidth="180.0" promptText="Indique la cantidad a llevar" />
@@ -34,12 +34,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="387.0" layoutY="376.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="109.0" text="Agregar al carrito" />
+      <Button fx:id="btn_AgregarAlCarrito" layoutX="387.0" layoutY="376.0" mnemonicParsing="false" onAction="#comprarProductos" prefHeight="54.0" prefWidth="109.0" text="Agregar al carrito" />
       <Label fx:id="labelMessage" layoutX="69.0" layoutY="480.0" prefHeight="54.0" prefWidth="382.0" text="..." textFill="#ff6f6f">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Button layoutX="842.0" layoutY="25.0" mnemonicParsing="false" text="Ir al carrito" />
+      <Button fx:id="btn_IrAlCarrito" layoutX="842.0" layoutY="25.0" mnemonicParsing="false" onAction="#irAlCarrito" text="Ir al carrito" />
    </children>
 </AnchorPane>
