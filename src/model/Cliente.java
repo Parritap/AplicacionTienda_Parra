@@ -27,10 +27,12 @@ public class Cliente {
         this.email = email;
         this.contrasenia = contrasenia;
         this.tipoPersona = tipoPersona;
+        this.carritoCompras = new CarritoCompras();
     }
 
 
     public Cliente() {
+        this.carritoCompras = new CarritoCompras();
     }
 
 

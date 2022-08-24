@@ -4,9 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.*;
+
+import java.io.IOException;
 
 public class VistaPrincipalController {
 
@@ -70,6 +77,27 @@ public class VistaPrincipalController {
 
     @FXML
     void irAlCarrito(ActionEvent event) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/CarritoCompras.fxml"));
+            AnchorPane root = loader.load();
+
+            CarritoComprasController carritoComprasController = loader.getController();
+            carritoComprasController.setCliente(cliente);
+
+            Scene scene = ((Node) event.getSource()).getScene();
+            carritoComprasController.setEscenaAnterior(scene);
+
+            Stage thisStage = (Stage) scene.getWindow();
+            thisStage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
 
     }
 
