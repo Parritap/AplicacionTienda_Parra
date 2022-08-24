@@ -77,7 +77,7 @@ public class Tienda {
 
     //CRUD Cliente
 
-    private void crearClienteNatural (String nombre, String identificacion, String direccion, String telefono, String email,
+    public void crearClienteNatural (String nombre, String identificacion, String direccion, String telefono, String email,
                                       String contrasenia, TipoPersona tipoPersona, Date fechaNacimiento) throws StringNuloOrVacioException {
 
         if (tipoPersona == null) throw new NullPointerException("El tipo de persona es nulo");
@@ -95,7 +95,7 @@ public class Tienda {
         }
     }
 
-    private void crearClienteJuridico (String nombre, String identificacion, String direccion, String telefono, String email,
+    public void crearClienteJuridico (String nombre, String identificacion, String direccion, String telefono, String email,
                                        String contrasenia, TipoPersona tipoPersona, String nit, String idTributaria) throws StringNuloOrVacioException {
 
         if (tipoPersona == null) throw new NullPointerException("El tipo de persona es nulo");
@@ -115,7 +115,7 @@ public class Tienda {
 
 
     //READ
-    private Cliente leerCliente(String email) {
+    public Cliente leerCliente(String email) {
 
         if (email != null) {
             for (Cliente c : listaClientes
@@ -128,7 +128,7 @@ public class Tienda {
     }
 
     //UPDATE
-    private void actualizarClienteNatural(String email, String nuevoNombre, String nuevaDireccion, String nuevoTelefono,
+    public void actualizarClienteNatural(String email, String nuevoNombre, String nuevaDireccion, String nuevoTelefono,
                                           String nuevaContrasenia) {
 
         if (email != null || !email.equals("")) {
@@ -157,7 +157,7 @@ public class Tienda {
         }
     }
 
-    private void actualizarClienteJurudico(String email, String nuevoNombre, String nuevaDireccion, String nuevoTelefono,
+    public void actualizarClienteJurudico(String email, String nuevoNombre, String nuevaDireccion, String nuevoTelefono,
                                           String nuevaContrasenia,  String nuevoNit, String nuevaIdTributaria) {
 
         if (email != null || !email.equals("")) {
@@ -195,7 +195,7 @@ public class Tienda {
     }
 
     //DELETE
-    private boolean eliminarCliente(String email) {
+    public boolean eliminarCliente(String email) {
 
         if (email != null && !email.equals("")) {
 
@@ -290,5 +290,21 @@ public class Tienda {
         return null;
 
     }
+
+
+    public boolean validarLogInUsuario (String email, String contrasenia){
+
+        Cliente c = null;
+        if (leerCliente (email) != null){
+            c = leerCliente(email);
+
+            return c.getContrasenia().equals(contrasenia);
+        }
+        return false;
+    }
+
+
+
+
 }
 

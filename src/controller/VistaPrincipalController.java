@@ -18,6 +18,14 @@ public class VistaPrincipalController {
 
     ObservableList<Producto> OL_productos = FXCollections.observableArrayList();
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     @FXML
     private Button btn_AgregarAlCarrito;
 
@@ -81,6 +89,4 @@ public class VistaPrincipalController {
         tablaProductos.getItems().clear();
         tablaProductos.setItems(OL_productos);
     }
-
-
 }

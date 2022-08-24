@@ -7,4 +7,9 @@ En mi caso, el path de mi pc es el sigueinte:
 --module-path "C:\Users\USUARIO\Documents\myJavaStuff\javafx-sdk-18.0.1\lib" --add-modules javafx.controls,javafx.fxml
 
 
+PC MESA
+--module-path "C:\Users\USUARIO\Documents\javafx-sdk-18.0.1\lib" --add-modules javafx.controls,javafx.fxml
+
+
+
 

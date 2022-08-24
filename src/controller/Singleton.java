@@ -4,6 +4,7 @@ import exceptions.NegativeNumberException;
 import exceptions.StringNuloOrVacioException;
 import model.*;
 import model.enums.PaisOrigen;
+import model.enums.TipoPersona;
 import model.enums.TipoProducto;
 
 import java.util.Date;
@@ -47,6 +48,9 @@ public class Singleton {
 
             tienda.crearProductoRefrigerado("03-1111", "Jamon", "El mejor jamón", 10000, 10, TipoProducto.REFRIGERADO, "codigoAprobacion-001", 5);
             tienda.crearProductoRefrigerado("03-2222", "Tocino", "El mejor Tocino", 20000, 20, TipoProducto.REFRIGERADO, "codigoAprobacion-002", 5);
+
+
+            tienda.crearClienteNatural("Juan Esteban", "1002656555", "Mi casita en la 14", "3243585508", "cliente@cliente.com", "cliente", TipoPersona.NATURAL, new Date());
 
 
         } catch (StringNuloOrVacioException e) {
